@@ -24,7 +24,7 @@
         <maven-deploy-plugin.version>3.0.0-M1</maven-deploy-plugin.version>
         <maven-install-plugin.version>3.0.0-M1</maven-install-plugin.version>
         <maven-jar-plugin.version>3.1.0</maven-jar-plugin.version>
-        <maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
+        <maven-javadoc-plugin.version>3.1.0</maven-javadoc-plugin.version>
         <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
         <maven-site-plugin.version>3.7.1</maven-site-plugin.version>
         <maven-source-plugin.version>3.1.0</maven-source-plugin.version>
@@ -131,36 +131,41 @@
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>${maven-dependency-plugin.version}</version>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-deploy-plugin</artifactId>
-                <version>${maven-deploy-plugin.version}</version>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-install-plugin</artifactId>
-                <version>${maven-install-plugin.version}</version>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${maven-resources-plugin.version}</version>
                 <executions>
                     <execution>
-                        <!-- mvn install:install-file@local -->
-                        <id>local</id>
+                        <id>default-resources</id>
                         <phase>none</phase>
+                    </execution>
+                    <execution>
+                        <id>main-resources</id>
+                        <phase>process-resources</phase>
                         <goals>
-                            <goal>install-file</goal>
+                            <goal>resources</goal>
                         </goals>
-                        <configuration>
-                            <file>${project.build.directory}/${project.build.finalName}.jar</file>
-                            <generatePom>false</generatePom>
-                            <pomFile>pom.xml</pomFile>
-                            <sources>${project.build.directory}/${project.build.finalName}-sources.jar</sources>
-                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>default-testResources</id>
+                        <phase>none</phase>
+                    </execution>
+                    <execution>
+                        <id>test-resources</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>testResources</goal>
+                        </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <overwrite>false</overwrite>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>${maven-dependency-plugin.version}</version>
             </plugin>
 
             <plugin>
@@ -213,35 +218,8 @@
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>${maven-resources-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <id>default-resources</id>
-                        <phase>none</phase>
-                    </execution>
-                    <execution>
-                        <id>main-resources</id>
-                        <phase>process-resources</phase>
-                        <goals>
-                            <goal>resources</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>default-testResources</id>
-                        <phase>none</phase>
-                    </execution>
-                    <execution>
-                        <id>test-resources</id>
-                        <phase>process-resources</phase>
-                        <goals>
-                            <goal>testResources</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <overwrite>false</overwrite>
-                </configuration>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven-javadoc-plugin.version}</version>
             </plugin>
 
             <plugin>
@@ -280,6 +258,18 @@
                 <configuration>
                     <forceCreation>true</forceCreation>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <version>${maven-install-plugin.version}</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>${maven-deploy-plugin.version}</version>
             </plugin>
 
             <plugin>
