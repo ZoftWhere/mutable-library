@@ -1,4 +1,4 @@
-package app.zoftwhere.mutable.function;
+package app.zoftwhere.function;
 
 import java.util.Optional;
 import java.util.function.Supplier;

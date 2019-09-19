@@ -1,12 +1,12 @@
-package app.zoftwhere.mutable.example;
+package example;
 
-import app.zoftwhere.mutable.data.MutableTransformer0;
-import app.zoftwhere.mutable.data.MutableTransformer1;
-import app.zoftwhere.mutable.data.MutableTransformer2;
-import app.zoftwhere.mutable.data.MutableValue;
-import app.zoftwhere.mutable.function.Consumer0;
-import app.zoftwhere.mutable.function.Consumer1;
-import app.zoftwhere.mutable.function.Consumer2;
+import app.zoftwhere.mutable.MutableTransformer0;
+import app.zoftwhere.mutable.MutableTransformer1;
+import app.zoftwhere.mutable.MutableTransformer2;
+import app.zoftwhere.mutable.MutableValue;
+import app.zoftwhere.function.Consumer0;
+import app.zoftwhere.function.Consumer1;
+import app.zoftwhere.function.Consumer2;
 
 import java.util.Random;
 

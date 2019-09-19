@@ -1,6 +1,6 @@
-package app.zoftwhere.mutable.data;
+package app.zoftwhere.mutable;
 
-import app.zoftwhere.mutable.function.PlaceHolder;
+import app.zoftwhere.mutable.MutableValue;
 import org.junit.jupiter.api.Test;
 
 import java.util.NoSuchElementException;

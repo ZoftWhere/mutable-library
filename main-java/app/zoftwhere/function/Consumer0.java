@@ -1,4 +1,4 @@
-package app.zoftwhere.mutable.function;
+package app.zoftwhere.function;
 
 public interface Consumer0 {
 

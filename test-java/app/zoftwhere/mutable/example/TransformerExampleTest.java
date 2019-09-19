@@ -1,6 +1,6 @@
-package example;
+package app.zoftwhere.mutable.example;
 
-import app.zoftwhere.mutable.example.TransformerExample;
+import example.TransformerExample;
 import org.junit.jupiter.api.Test;
 
 class TransformerExampleTest extends TransformerExample {

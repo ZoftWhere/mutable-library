@@ -1,4 +1,4 @@
-package app.zoftwhere.mutable.data;
+package app.zoftwhere.mutable;
 
 import java.util.ArrayList;
 import java.util.Collection;

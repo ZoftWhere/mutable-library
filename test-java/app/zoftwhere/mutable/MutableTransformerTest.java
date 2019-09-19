@@ -1,5 +1,8 @@
-package app.zoftwhere.mutable.data;
+package app.zoftwhere.mutable;
 
+import app.zoftwhere.mutable.MutableTransformer0;
+import app.zoftwhere.mutable.MutableTransformer1;
+import app.zoftwhere.mutable.MutableTransformer2;
 import org.junit.jupiter.api.Test;
 
 import java.util.function.Supplier;

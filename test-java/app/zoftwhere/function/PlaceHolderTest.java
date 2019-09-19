@@ -1,4 +1,4 @@
-package app.zoftwhere.mutable.function;
+package app.zoftwhere.function;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

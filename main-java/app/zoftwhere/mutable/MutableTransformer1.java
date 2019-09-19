@@ -1,7 +1,7 @@
-package app.zoftwhere.mutable.data;
+package app.zoftwhere.mutable;
 
-import app.zoftwhere.mutable.function.Consumer1;
-import app.zoftwhere.mutable.function.Transformer1;
+import app.zoftwhere.function.Consumer1;
+import app.zoftwhere.function.Transformer1;
 
 import java.util.function.Function;
 

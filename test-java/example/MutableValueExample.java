@@ -1,6 +1,6 @@
 package example;
 
-import app.zoftwhere.mutable.data.MutableValue;
+import app.zoftwhere.mutable.MutableValue;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

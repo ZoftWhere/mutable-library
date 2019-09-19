@@ -1,6 +1,6 @@
-package app.zoftwhere.mutable.data;
+package app.zoftwhere.mutable;
 
-import app.zoftwhere.mutable.function.PlaceHolder;
+import app.zoftwhere.function.PlaceHolder;
 
 import java.util.NoSuchElementException;
 import java.util.Optional;
