@@ -13,6 +13,10 @@
         <project.source.sourceEncoding>UTF-8</project.source.sourceEncoding>
         <project.report.sourceEncoding>UTF-8</project.report.sourceEncoding>
 
+        <!-- Settings: maven-compiler-plugin -->
+        <maven.compiler.main-jdk>8</maven.compiler.main-jdk>
+        <maven.compiler.test-jdk>11</maven.compiler.test-jdk>
+
         <!-- Settings: User defined plugin properties -->
         <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
@@ -94,8 +98,8 @@
                             <goal>compile</goal>
                         </goals>
                         <configuration>
-                            <source>8</source>
-                            <target>8</target>
+                            <source>${maven.compiler.main-jdk}</source>
+                            <target>${maven.compiler.main-jdk}</target>
                         </configuration>
                     </execution>
                     <execution>
@@ -109,14 +113,14 @@
                             <goal>testCompile</goal>
                         </goals>
                         <configuration>
-                            <source>11</source>
-                            <target>11</target>
+                            <source>${maven.compiler.test-jdk}</source>
+                            <target>${maven.compiler.test-jdk}</target>
                         </configuration>
                     </execution>
                 </executions>
                 <configuration>
-                    <source>11</source>
-                    <target>11</target>
+                    <source>${maven.compiler.test-jdk}</source>
+                    <target>${maven.compiler.test-jdk}</target>
                     <compilerArgs>
                         <arg>-Xlint:all,-processing,-cast,-serial,-try</arg>
                     </compilerArgs>
