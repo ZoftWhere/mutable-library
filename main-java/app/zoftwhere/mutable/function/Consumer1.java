@@ -1,6 +1,8 @@
 package app.zoftwhere.mutable.function;
 
-public interface Consumer1<T> {
+import java.util.function.Consumer;
+
+public interface Consumer1<T> extends Consumer<T> {
 
     void accept(T t);
 }
