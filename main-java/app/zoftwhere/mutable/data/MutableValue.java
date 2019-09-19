@@ -5,15 +5,15 @@ import app.zoftwhere.mutable.function.PlaceHolder;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
-public class Variable<T> implements PlaceHolder<T> {
+public class MutableValue<T> implements PlaceHolder<T> {
 
     private T value;
 
-    public Variable() {
+    public MutableValue() {
         this.value = null;
     }
 
-    public Variable(T value) {
+    public MutableValue(T value) {
         this.value = value;
     }
 
