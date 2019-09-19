@@ -5,16 +5,16 @@ import app.zoftwhere.mutable.function.Transformer2;
 
 import java.util.function.Function;
 
-public class AbstractTransformer2<T1, T2, R> extends MutableValue<R> implements Transformer2<T1, T2, R> {
+public class MutableTransformer2<T1, T2, R> extends MutableValue<R> implements Transformer2<T1, T2, R> {
 
     private final Consumer2<T1, T2> consumer;
 
-    public AbstractTransformer2(Function<AbstractTransformer2<T1, T2, R>, Consumer2<T1, T2>> function) {
+    public MutableTransformer2(Function<MutableTransformer2<T1, T2, R>, Consumer2<T1, T2>> function) {
         super();
         this.consumer = function.apply(this);
     }
 
-    public AbstractTransformer2(Function<AbstractTransformer2<T1, T2, R>, Consumer2<T1, T2>> function, R value) {
+    public MutableTransformer2(Function<MutableTransformer2<T1, T2, R>, Consumer2<T1, T2>> function, R value) {
         super(value);
         this.consumer = function.apply(this);
     }
