@@ -1,17 +1,27 @@
 package app.zoftwhere.mutable.data;
 
+import app.zoftwhere.mutable.function.Consumer1;
 import app.zoftwhere.mutable.function.Transformer1;
 
-public abstract class AbstractTransformer1<T, R> extends Variable<R> implements Transformer1<T, R> {
+import java.util.function.Function;
 
-    public AbstractTransformer1() {
+public class AbstractTransformer1<T, R> extends MutableValue<R> implements Transformer1<T, R> {
+
+    private final Consumer1<T> consumer;
+
+    public AbstractTransformer1(Function<AbstractTransformer1<T, R>, Consumer1<T>> function) {
         super();
+        this.consumer = function.apply(this);
     }
 
-    public AbstractTransformer1(R value) {
+    public AbstractTransformer1(Function<AbstractTransformer1<T, R>, Consumer1<T>> function, R value) {
         super(value);
+        this.consumer = function.apply(this);
     }
 
-    public abstract void accept(T t);
+    @Override
+    public void accept(T t) {
+        this.consumer.accept(t);
+    }
 
 }
