@@ -25,10 +25,6 @@ When you need a final field in your lambda, but you need the value to change lat
  may be the solution.
 
 ``` kotlin
-
-/**
- * 
- */
 public class MutableValueExample {
 
     private static final MutableValue<String> publicKey = new MutableValue<>(null);
@@ -103,6 +99,7 @@ public class TransformerExample0 {
         counter.set(0L);
         counter.accept();
         var count = counter.get();
+        assert count == 1;
     }
 
     private static Consumer0 newLongCounter(MutableTransformer0<Long> internal) {
@@ -126,6 +123,7 @@ public class TransformerExample1 {
         chainHash.set(System.currentTimeMillis());
         chainHash.accept(new Random().nextLong());
         var hash = chainHash.get();
+        assert hash != null;
     }
 
     private static Consumer1<Long> newHashFunction(MutableTransformer1<Long, Long> internal) {
@@ -146,7 +144,6 @@ public class TransformerExample1 {
 }
 ```
 
-
 ### Transformer with Two Argument Consumer
 
 A simple 2-dimension route distance total example.
@@ -161,6 +158,7 @@ public class TransformerExample2 {
         routeDistance.accept(1.0, 1.0);
         routeDistance.accept(4.0, 6.0);
         var distance = routeDistance.get();
+        assert distance == 5.0;
     }
 
     private static Consumer2<Double, Double> newRouteFunction(MutableTransformer2<Double, Double, Double> internal) {
