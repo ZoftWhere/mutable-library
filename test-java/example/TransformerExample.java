@@ -19,7 +19,7 @@ public class TransformerExample {
         counter.set(0L);
         counter.accept();
         var count = counter.get();
-        assert count == 0;
+        assert count == 1;
 
         // Simple single input hash function.
         var chainHash = new MutableTransformer1<>(TransformerExample::newHashFunction);
