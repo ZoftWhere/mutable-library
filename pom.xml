@@ -113,8 +113,7 @@
                             <goal>testCompile</goal>
                         </goals>
                         <configuration>
-                            <source>${maven.compiler.test-jdk}</source>
-                            <target>${maven.compiler.test-jdk}</target>
+                            <release>${maven.compiler.test-jdk}</release>
                         </configuration>
                     </execution>
                 </executions>
@@ -159,6 +158,15 @@
                 </executions>
                 <configuration>
                     <overwrite>false</overwrite>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <printSummary>false</printSummary>
                 </configuration>
             </plugin>
 
