@@ -130,9 +130,6 @@ class OverlayListTest {
         var stringArray = overlay.toArray(new String[1]);
         assertNotNull(stringArray);
 
-        IntFunction<String[]> generator = value -> new String[0];
-        assertNotNull(overlay.toArray(generator));
-
         assertNotNull(overlay.iterator());
         assertNotNull(overlay.listIterator());
         assertNotNull(overlay.listIterator(0));
