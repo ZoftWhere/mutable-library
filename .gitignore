@@ -1,5 +1,6 @@
 # IDE files
-/.idea
+/.idea/*
+!/.idea/codeStyles/
 
 # Maven target
 /_target
