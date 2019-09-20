@@ -13,7 +13,7 @@ public class OverlayListExample {
         // A default-value-backed list.
         final var original = Collections.unmodifiableList(List.of("five", "eight", "two"));
         final var proxy = Arrays.asList(new String[original.size()]);
-        final var list = new OverlayList<>(original, proxy);
+        final var list = new OverlayList<>(proxy, original);
 
         // Set the first value as ten.
         list.set(0, "ten");
