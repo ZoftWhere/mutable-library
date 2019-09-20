@@ -1,5 +1,8 @@
-package app.zoftwhere.function;
+package app.zoftwhere.function.scope;
 
+import app.zoftwhere.function.ThrowingFunction0;
+import app.zoftwhere.function.ThrowingFunction1;
+import app.zoftwhere.function.ThrowingFunction2;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -8,13 +11,14 @@ class ThrowingFunctionTest {
 
     @Test
     void testTypes() {
-        var empty = new ThrowingFunction0<String>() {
+        final var value = "void";
+        final var empty = new ThrowingFunction0<String>() {
             @Override
             public String accept() {
-                return "void";
+                return value;
             }
         };
-        assertEquals("void", empty.accept());
+        assertEquals(value, empty.accept());
 
         var single = new ThrowingFunction1<Integer, String>() {
             @Override
