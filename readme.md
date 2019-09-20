@@ -1,5 +1,5 @@
 # ZoftWhere Mutable Library
-![Language](https://img.shields.io/github/languages/top/ZoftWhere/mutable-library) [![License](https://img.shields.io/github/license/ZoftWhere/mutable-library)](https://github.com/ZoftWhere/mutable-library/blob/master/license.txt) ![GitHub Release Date](https://img.shields.io/github/release-date/ZoftWhere/mutable-library?label=v1.0.0)
+![Language](https://img.shields.io/github/languages/top/ZoftWhere/mutable-library) [![License](https://img.shields.io/github/license/ZoftWhere/mutable-library)](https://github.com/ZoftWhere/mutable-library/blob/master/license.txt) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/ZoftWhere/mutable-library) ![GitHub Release Date](https://img.shields.io/github/release-date/ZoftWhere/mutable-library)
 ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/ZoftWhere/mutable-library/master?label=master%20updated)
 
 A library for mutable values.
