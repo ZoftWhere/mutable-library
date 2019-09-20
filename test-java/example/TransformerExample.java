@@ -1,14 +1,14 @@
 package example;
 
+import java.util.Random;
+
+import app.zoftwhere.function.Consumer0;
+import app.zoftwhere.function.Consumer1;
+import app.zoftwhere.function.Consumer2;
 import app.zoftwhere.mutable.MutableTransformer0;
 import app.zoftwhere.mutable.MutableTransformer1;
 import app.zoftwhere.mutable.MutableTransformer2;
 import app.zoftwhere.mutable.MutableValue;
-import app.zoftwhere.function.Consumer0;
-import app.zoftwhere.function.Consumer1;
-import app.zoftwhere.function.Consumer2;
-
-import java.util.Random;
 
 public class TransformerExample {
 

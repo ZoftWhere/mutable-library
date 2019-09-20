@@ -1,9 +1,9 @@
 package app.zoftwhere.mutable;
 
-import app.zoftwhere.function.PlaceHolder;
-
 import java.util.NoSuchElementException;
 import java.util.Optional;
+
+import app.zoftwhere.function.PlaceHolder;
 
 public class MutableValue<T> implements PlaceHolder<T> {
 

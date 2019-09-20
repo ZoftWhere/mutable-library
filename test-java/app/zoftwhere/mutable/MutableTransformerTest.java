@@ -1,15 +1,11 @@
 package app.zoftwhere.mutable;
 
-import app.zoftwhere.mutable.MutableTransformer0;
-import app.zoftwhere.mutable.MutableTransformer1;
-import app.zoftwhere.mutable.MutableTransformer2;
-import org.junit.jupiter.api.Test;
-
 import java.util.function.Supplier;
+
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
 
 class MutableTransformerTest {
 

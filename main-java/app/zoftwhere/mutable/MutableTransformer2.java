@@ -1,9 +1,9 @@
 package app.zoftwhere.mutable;
 
+import java.util.function.Function;
+
 import app.zoftwhere.function.Consumer2;
 import app.zoftwhere.function.Transformer2;
-
-import java.util.function.Function;
 
 public class MutableTransformer2<T1, T2, R> extends MutableValue<R> implements Transformer2<T1, T2, R> {
 
