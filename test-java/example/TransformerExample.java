@@ -19,18 +19,21 @@ public class TransformerExample {
         counter.set(0L);
         counter.accept();
         var count = counter.get();
+        assert count == 0;
 
         // Simple single input hash function.
         var chainHash = new MutableTransformer1<>(TransformerExample::newHashFunction);
         chainHash.set(System.currentTimeMillis());
         chainHash.accept(new Random().nextLong());
         var hash = chainHash.get();
+        assert hash != null;
 
         // Simple 2-dimension route distance total.
         var routeDistance = new MutableTransformer2<>(TransformerExample::newRouteFunction);
         routeDistance.accept(1.0, 1.0);
-        routeDistance.accept(4.0, 6.0);
+        routeDistance.accept(4.0, 5.0);
         var distance = routeDistance.get();
+        assert distance == 5.0;
     }
 
     private static Consumer0 newLongCounter(MutableTransformer0<Long> internal) {
