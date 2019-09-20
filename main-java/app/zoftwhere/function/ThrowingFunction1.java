@@ -1,5 +1,6 @@
 package app.zoftwhere.function;
 
+@SuppressWarnings({"RedundantThrows", "RedundantSuppression", "unused"})
 public interface ThrowingFunction1<T, R> {
 
     R accept(T t) throws Throwable;

@@ -1,6 +1,7 @@
 package app.zoftwhere.mutable;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Iterator;
@@ -26,6 +27,11 @@ public class OverlayList<E> implements List<E> {
                 this.front.set(i, back.get(i));
             }
         }
+    }
+
+    @SuppressWarnings("WeakerAccess")
+    public OverlayList(E[] front, E[] back) {
+        this(Arrays.asList(back), Arrays.asList(front));
     }
 
     @Override
@@ -151,6 +157,7 @@ public class OverlayList<E> implements List<E> {
     }
 
     public <T> T[] toArray(T[] a) {
+        //noinspection SuspiciousToArrayCall
         return front.toArray(a);
     }
 

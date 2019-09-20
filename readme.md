@@ -1,5 +1,5 @@
 # ZoftWhere Mutable Library
-![Language](https://img.shields.io/github/languages/top/ZoftWhere/mutable-library) [![License](https://img.shields.io/github/license/ZoftWhere/mutable-library)](https://github.com/ZoftWhere/mutable-library/blob/master/license.txt) ![GitHub Release Date](https://img.shields.io/github/release-date/ZoftWhere/mutable-library?label=v1.0.0)
+![Language](https://img.shields.io/github/languages/top/ZoftWhere/mutable-library) [![License](https://img.shields.io/github/license/ZoftWhere/mutable-library)](https://github.com/ZoftWhere/mutable-library/blob/master/license.txt) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/ZoftWhere/mutable-library) ![GitHub Release Date](https://img.shields.io/github/release-date/ZoftWhere/mutable-library)
 ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/ZoftWhere/mutable-library/master?label=master%20updated)
 
 A library for mutable values.
@@ -25,10 +25,6 @@ When you need a final field in your lambda, but you need the value to change lat
  may be the solution.
 
 ``` kotlin
-
-/**
- * 
- */
 public class MutableValueExample {
 
     private static final MutableValue<String> publicKey = new MutableValue<>(null);
@@ -64,6 +60,31 @@ public class MutableValueExample {
 
 ```
 
+### Overlay List
+
+A simple default-value-backed list example.
+
+``` kotlin
+public class OverlayListExample {
+
+    public static void main(String[] args) {
+        
+        // A default-value-backed list.
+        final var original = Collections.unmodifiableList(List.of("five", "eight", "two"));
+        final var proxy = Arrays.asList(new String[original.size()]);
+        final var list = new OverlayList<>(proxy, original);
+
+        // Set the first value as ten.
+        list.set(0, "ten");
+
+        // Change back to default by setting it as null.
+        list.set(0, null);
+
+        // list.get(0) == "five"
+        assert list.get(0).equals("five");
+    }
+```
+
 ### Transformer with Zero Argument Consumer
 
 A simple counter example.
@@ -78,6 +99,7 @@ public class TransformerExample0 {
         counter.set(0L);
         counter.accept();
         var count = counter.get();
+        assert count == 1;
     }
 
     private static Consumer0 newLongCounter(MutableTransformer0<Long> internal) {
@@ -101,6 +123,7 @@ public class TransformerExample1 {
         chainHash.set(System.currentTimeMillis());
         chainHash.accept(new Random().nextLong());
         var hash = chainHash.get();
+        assert hash != null;
     }
 
     private static Consumer1<Long> newHashFunction(MutableTransformer1<Long, Long> internal) {
@@ -121,7 +144,6 @@ public class TransformerExample1 {
 }
 ```
 
-
 ### Transformer with Two Argument Consumer
 
 A simple 2-dimension route distance total example.
@@ -136,6 +158,7 @@ public class TransformerExample2 {
         routeDistance.accept(1.0, 1.0);
         routeDistance.accept(4.0, 6.0);
         var distance = routeDistance.get();
+        assert distance == 5.0;
     }
 
     private static Consumer2<Double, Double> newRouteFunction(MutableTransformer2<Double, Double, Double> internal) {

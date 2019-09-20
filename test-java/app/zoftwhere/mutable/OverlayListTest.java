@@ -1,9 +1,8 @@
 package app.zoftwhere.mutable;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
-import java.util.function.IntFunction;
 
 import org.junit.jupiter.api.Test;
 
@@ -17,15 +16,15 @@ class OverlayListTest {
 
     @Test
     void todoCreateRealTest() {
-        var overlay = (OverlayList<String>) null;
-        var frontList = new ArrayList<String>();
-        frontList.add(null);
-        frontList.add(null);
-        var backList = new ArrayList<String>();
-        backList.add("back");
-        backList.add(null);
+        final var backArray = new String[] {"back", null};
+        final var backList = Arrays.asList(backArray);
+        final var frontArray = new String[] {null, null};
+        final var frontList = Arrays.asList(frontArray);
 
-        overlay = new OverlayList<>(frontList, backList);
+        final var constructor = new OverlayList<>(frontArray, backArray);
+        assertNotNull(constructor);
+
+        final var overlay = new OverlayList<>(frontList, backList);
         assertNotNull(overlay);
         assertFalse(overlay.isEmpty());
         assertTrue(overlay.contains(null));
@@ -129,9 +128,6 @@ class OverlayListTest {
 
         var stringArray = overlay.toArray(new String[1]);
         assertNotNull(stringArray);
-
-        IntFunction<String[]> generator = value -> new String[0];
-        assertNotNull(overlay.toArray(generator));
 
         assertNotNull(overlay.iterator());
         assertNotNull(overlay.listIterator());

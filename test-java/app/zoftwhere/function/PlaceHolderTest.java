@@ -1,16 +1,21 @@
 package app.zoftwhere.function;
 
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class PlaceHolderTest {
 
     @Test
     void testIsEmpty() {
-        var placeHolder = new PlaceHolder<String>() {
+        final var placeHolder = new PlaceHolder<String>() {
+            String internal = null;
+
             @Override
             public Optional<String> optional() {
                 return Optional.empty();
@@ -18,22 +23,26 @@ class PlaceHolderTest {
 
             @Override
             public boolean isPresent() {
-                return false;
+                return internal != null;
             }
 
             @Override
-            public void set(String s) {
+            public void set(String value) {
+                internal = value;
             }
 
             @Override
             public String get() {
-                throw new NoSuchElementException();
+                return internal;
             }
         };
 
-        Assertions.assertNotNull(placeHolder);
-        Assertions.assertFalse(placeHolder.isPresent());
-        Assertions.assertTrue(placeHolder.isEmpty());
+        assertNotNull(placeHolder);
+        assertFalse(placeHolder.isPresent());
+        assertTrue(placeHolder.isEmpty());
+
+        placeHolder.set("test");
+        assertEquals("test", placeHolder.get());
     }
 
 }
