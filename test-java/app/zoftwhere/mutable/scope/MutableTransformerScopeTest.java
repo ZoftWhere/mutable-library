@@ -7,7 +7,7 @@ import app.zoftwhere.mutable.MutableTransformer3;
 import app.zoftwhere.mutable.MutableTransformer4;
 import org.junit.jupiter.api.Test;
 
-class MutableTransformerTest {
+class MutableTransformerScopeTest {
 
     @Test
     void testScope() {

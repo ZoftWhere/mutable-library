@@ -7,7 +7,7 @@ import app.zoftwhere.function.ThrowingFunction3;
 import app.zoftwhere.function.ThrowingFunction4;
 import org.junit.jupiter.api.Test;
 
-class ThrowingFunctionTest {
+class ThrowingFunctionScopeTest {
 
     @Test
     void testScope() {
