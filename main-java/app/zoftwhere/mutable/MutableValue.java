@@ -26,7 +26,7 @@ public class MutableValue<T> implements PlaceHolder<T> {
      * Retrieve variable value.
      *
      * @return Stored value.
-     * @throws NoSuchElementException if no value is present
+     * @exception NoSuchElementException if no value is present
      */
     @Override
     public T get() {

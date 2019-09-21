@@ -3,39 +3,38 @@ package app.zoftwhere.function.scope;
 import app.zoftwhere.function.ThrowingFunction0;
 import app.zoftwhere.function.ThrowingFunction1;
 import app.zoftwhere.function.ThrowingFunction2;
+import app.zoftwhere.function.ThrowingFunction3;
+import app.zoftwhere.function.ThrowingFunction4;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ThrowingFunctionTest {
 
     @Test
-    void testTypes() {
-        final var value = "void";
-        final var empty = new ThrowingFunction0<String>() {
-            @Override
-            public String accept() {
-                return value;
-            }
-        };
-        assertEquals(value, empty.accept());
+    void testScope() {
+        final ThrowingFunction0<String> tf0 //
+            = () -> { throw new NullPointerException(); };
+        try { tf0.accept(); }
+        catch (Throwable ignored) { }
 
-        var single = new ThrowingFunction1<Integer, String>() {
-            @Override
-            public String accept(Integer integer) {
-                return "number" + integer;
-            }
-        };
-        assertEquals("number5", single.accept(5));
+        final ThrowingFunction1<String, String> tf1 //
+            = (t1) -> { throw new NullPointerException(); };
+        try { tf1.accept("s1"); }
+        catch (Throwable ignored) { }
 
-        var twin = new ThrowingFunction2<Integer, Integer, String>() {
-            @Override
-            public String accept(Integer i1, Integer i2) {
-                return "v" + i1 + "." + i2;
-            }
-        };
+        final ThrowingFunction2<String, String, String> tf2 //
+            = (t1, t2) -> { throw new NullPointerException(); };
+        try { tf2.accept("s1", "s2"); }
+        catch (Throwable ignored) { }
 
-        assertEquals("v4.8", twin.accept(4, 8));
+        final ThrowingFunction3<String, String, String, String> tf3 //
+            = (t1, t2, t3) -> { throw new NullPointerException(); };
+        try { tf3.accept("s1", "s2", "s3"); }
+        catch (Throwable ignored) { }
+
+        final ThrowingFunction4<String, String, String, String, String> tf4 //
+            = (t1, t2, t3, t4) -> { throw new NullPointerException(); };
+        try { tf4.accept("s1", "s2", "s3", "s4"); }
+        catch (Throwable ignored) { }
     }
 
 }
