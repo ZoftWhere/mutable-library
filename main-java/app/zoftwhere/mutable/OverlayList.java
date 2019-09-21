@@ -29,7 +29,6 @@ public class OverlayList<E> implements List<E> {
         }
     }
 
-    @SuppressWarnings("WeakerAccess")
     public OverlayList(E[] front, E[] back) {
         this(Arrays.asList(back), Arrays.asList(front));
     }
