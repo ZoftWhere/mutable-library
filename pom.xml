@@ -90,10 +90,23 @@
                     <execution>
                         <id>default-compile</id>
                         <phase>none</phase>
+                        <configuration>
+                            <release>${maven.compiler.test-jdk}</release>
+                        </configuration>
                     </execution>
                     <execution>
                         <id>main-compile</id>
                         <phase>compile</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                        <configuration>
+                            <release>${maven.compiler.test-jdk}</release>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>main-compile-jdk8</id>
+                        <phase>none</phase>
                         <goals>
                             <goal>compile</goal>
                         </goals>
@@ -118,13 +131,11 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <source>${maven.compiler.test-jdk}</source>
-                    <target>${maven.compiler.test-jdk}</target>
+                    <showDeprecation>true</showDeprecation>
+                    <showWarnings>true</showWarnings>
                     <compilerArgs>
                         <arg>-Xlint:all,-processing,-cast,-serial,-try</arg>
                     </compilerArgs>
-                    <showWarnings>true</showWarnings>
-                    <showDeprecation>true</showDeprecation>
                 </configuration>
             </plugin>
 
