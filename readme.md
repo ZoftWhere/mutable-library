@@ -12,9 +12,15 @@ The ZoftWhere Mutable Library provides mutable classes for scopes where final ar
 
 ## Compiling and Installing the Library
 
-The source code can be compiled with Java language version 8.  It has been tested with Oracle JDK8, JDK11 and JDK12.
+The source code can be compiled with Java language version 8.  It has been tested with Oracle JDK8, JDK11 and JDK12.  The test sources are compiled against JDK 11.
 
-The project is Maven based, so executing the ```mvn install``` should install the library to the local repository.  It has been tested with Apache Maven v3.6.1
+The project is Maven based, so executing the ```mvn install``` should install the library to the local repository (Requires at least JDK11).  It has been tested with Apache Maven v3.6.1.
+
+If the project needs to be installed against JDK8, it can be accomplished by calling the following Maven command:
+
+``` shell script
+mvn clean compiler:compile@main-compile-jdk8 jar:jar@main-jar build-helper:add-source@main-jpms source:jar@main-sources javadoc:jar@main-javadoc moditect:add-module-info@main-jpms install:install-file@main-install
+``` 
 
 
 ## Examples
