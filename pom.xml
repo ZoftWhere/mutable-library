@@ -5,7 +5,7 @@
 
     <groupId>app.zoftwhere.mutable</groupId>
     <artifactId>mutable-library</artifactId>
-    <version>1.2.0</version>
+    <version>1.2.1</version>
 
     <properties>
         <!-- Settings: maven-resource-plugin -->
@@ -90,10 +90,23 @@
                     <execution>
                         <id>default-compile</id>
                         <phase>none</phase>
+                        <configuration>
+                            <release>${maven.compiler.test-jdk}</release>
+                        </configuration>
                     </execution>
                     <execution>
                         <id>main-compile</id>
                         <phase>compile</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                        <configuration>
+                            <release>${maven.compiler.test-jdk}</release>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>main-compile-jdk8</id>
+                        <phase>none</phase>
                         <goals>
                             <goal>compile</goal>
                         </goals>
@@ -118,13 +131,11 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <source>${maven.compiler.test-jdk}</source>
-                    <target>${maven.compiler.test-jdk}</target>
+                    <showDeprecation>true</showDeprecation>
+                    <showWarnings>true</showWarnings>
                     <compilerArgs>
                         <arg>-Xlint:all,-processing,-cast,-serial,-try</arg>
                     </compilerArgs>
-                    <showWarnings>true</showWarnings>
-                    <showDeprecation>true</showDeprecation>
                 </configuration>
             </plugin>
 
@@ -150,7 +161,7 @@
                     </execution>
                     <execution>
                         <id>test-resources</id>
-                        <phase>process-resources</phase>
+                        <phase>process-test-resources</phase>
                         <goals>
                             <goal>testResources</goal>
                         </goals>
@@ -166,6 +177,10 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
+                    <!-- https://issues.apache.org/jira/browse/SUREFIRE-1534 -->
+                    <forkCount>0</forkCount>
+                    <reuseForks>false</reuseForks>
+                    <useSystemClassLoader>false</useSystemClassLoader>
                     <printSummary>false</printSummary>
                 </configuration>
             </plugin>
@@ -200,7 +215,7 @@
                     </execution>
                     <execution>
                         <id>test-jar</id>
-                        <phase>package</phase>
+                        <phase>none</phase>
                         <goals>
                             <goal>test-jar</goal>
                         </goals>
@@ -212,6 +227,7 @@
                 </executions>
                 <configuration>
                     <archive>
+                        <addMavenDescriptor>false</addMavenDescriptor>
                         <manifest>
                             <addClasspath>false</addClasspath>
                         </manifest>
@@ -219,6 +235,12 @@
                             <Main-Class/>
                             <Class-Path/>
                             <Dependencies/>
+                            <Implementation-Title>${project.artifactId}</Implementation-Title>
+                            <Implementation-Vendor>${project.groupId}</Implementation-Vendor>
+                            <Implementation-Version>${project.version}</Implementation-Version>
+                            <Specification-Title>${project.artifactId}</Specification-Title>
+                            <Specification-Vendor>${project.groupId}</Specification-Vendor>
+                            <Specification-Version>${project.version}</Specification-Version>
                         </manifestEntries>
                     </archive>
                 </configuration>
@@ -228,6 +250,35 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>${maven-javadoc-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>main-javadoc</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <configuration>
+                            <failOnWarnings>true</failOnWarnings>
+                            <sourceFileExcludes>
+                                <exclude>module-info.java</exclude>
+                            </sourceFileExcludes>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>test-javadoc</id>
+                        <phase>none</phase>
+                        <goals>
+                            <goal>test-jar</goal>
+                        </goals>
+                        <configuration>
+                            <failOnWarnings>false</failOnWarnings>
+                        </configuration>
+                    </execution>
+                </executions>
+                <configuration>
+                    <quiet>true</quiet>
+                    <failOnError>true</failOnError>
+                </configuration>
             </plugin>
 
             <plugin>
@@ -235,13 +286,6 @@
                 <artifactId>maven-source-plugin</artifactId>
                 <version>${maven-source-plugin.version}</version>
                 <executions>
-                    <execution>
-                        <phase>none</phase>
-                    </execution>
-                    <execution>
-                        <id>default-source</id>
-                        <phase>none</phase>
-                    </execution>
                     <execution>
                         <id>main-source</id>
                         <phase>package</phase>
@@ -254,7 +298,7 @@
                     </execution>
                     <execution>
                         <id>test-source</id>
-                        <phase>package</phase>
+                        <phase>none</phase>
                         <goals>
                             <goal>test-jar</goal>
                         </goals>
@@ -264,7 +308,6 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <forceCreation>true</forceCreation>
                 </configuration>
             </plugin>
 
@@ -272,6 +315,25 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-install-plugin</artifactId>
                 <version>${maven-install-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>main-install</id>
+                        <phase>none</phase>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <configuration>
+                            <pomFile>${project.basedir}/pom.xml</pomFile>
+                            <groupId>${project.groupId}</groupId>
+                            <artifactId>${project.artifactId}</artifactId>
+                            <version>${project.version}</version>
+                            <file>${project.build.directory}/${project.build.finalName}.jar</file>
+                            <packaging>jar</packaging>
+                            <sources>${project.build.directory}/${project.build.finalName}-sources.jar</sources>
+                            <javadoc>${project.build.directory}/${project.build.finalName}-javadoc.jar</javadoc>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
 
             <plugin>
@@ -281,12 +343,32 @@
             </plugin>
 
             <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <id>main-jpms</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${project.basedir}/main-jpms</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
                 <groupId>org.moditect</groupId>
                 <artifactId>moditect-maven-plugin</artifactId>
                 <version>1.0.0.Beta2</version>
                 <executions>
                     <execution>
-                        <id>add-module-info</id>
+                        <id>main-jpms</id>
                         <phase>package</phase>
                         <goals>
                             <goal>add-module-info</goal>
@@ -302,5 +384,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
