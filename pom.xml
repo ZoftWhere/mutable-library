@@ -177,6 +177,10 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
+                    <!-- https://issues.apache.org/jira/browse/SUREFIRE-1534 -->
+                    <forkCount>0</forkCount>
+                    <reuseForks>false</reuseForks>
+                    <useSystemClassLoader>false</useSystemClassLoader>
                     <printSummary>false</printSummary>
                 </configuration>
             </plugin>
