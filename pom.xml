@@ -215,7 +215,7 @@
                     </execution>
                     <execution>
                         <id>test-jar</id>
-                        <phase>package</phase>
+                        <phase>none</phase>
                         <goals>
                             <goal>test-jar</goal>
                         </goals>
@@ -287,13 +287,6 @@
                 <version>${maven-source-plugin.version}</version>
                 <executions>
                     <execution>
-                        <phase>none</phase>
-                    </execution>
-                    <execution>
-                        <id>default-source</id>
-                        <phase>none</phase>
-                    </execution>
-                    <execution>
                         <id>main-source</id>
                         <phase>package</phase>
                         <goals>
@@ -305,7 +298,7 @@
                     </execution>
                     <execution>
                         <id>test-source</id>
-                        <phase>package</phase>
+                        <phase>none</phase>
                         <goals>
                             <goal>test-jar</goal>
                         </goals>
@@ -315,7 +308,6 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <forceCreation>true</forceCreation>
                 </configuration>
             </plugin>
 
@@ -323,6 +315,25 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-install-plugin</artifactId>
                 <version>${maven-install-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>main-install</id>
+                        <phase>none</phase>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <configuration>
+                            <pomFile>${project.basedir}/pom.xml</pomFile>
+                            <groupId>${project.groupId}</groupId>
+                            <artifactId>${project.artifactId}</artifactId>
+                            <version>${project.version}</version>
+                            <file>${project.build.directory}/${project.build.finalName}.jar</file>
+                            <packaging>jar</packaging>
+                            <sources>${project.build.directory}/${project.build.finalName}-sources.jar</sources>
+                            <javadoc>${project.build.directory}/${project.build.finalName}-javadoc.jar</javadoc>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
 
             <plugin>
@@ -357,7 +368,7 @@
                 <version>1.0.0.Beta2</version>
                 <executions>
                     <execution>
-                        <id>add-module-info</id>
+                        <id>main-jpms</id>
                         <phase>package</phase>
                         <goals>
                             <goal>add-module-info</goal>
@@ -373,5 +384,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
