@@ -27,8 +27,9 @@ class PlaceHolderTest {
             }
 
             @Override
-            public void set(String value) {
+            public Void set(String value) {
                 internal = value;
+                return null;
             }
 
             @Override

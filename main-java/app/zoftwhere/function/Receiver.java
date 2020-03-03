@@ -1,7 +1,7 @@
 package app.zoftwhere.function;
 
 @SuppressWarnings("unused")
-public interface Receiver<T> {
+public interface Receiver<T, R> {
 
-    void set(T t);
+    R set(T t);
 }

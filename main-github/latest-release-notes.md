@@ -1,7 +1,8 @@
-Release Notes v1.2.1
+Release Notes v2.0.0
 
-- Maven POM updated to module-info.java in source artifact.
-- Maven POM updated to fix/remove maven-javadoc-plugin not creating package-list.
-- Maven POM updated for known issue with maven-surefire-plugin; exceptions occurring when module-info.java file is in the path and/or reuseForks is false.
-- Updated archived artifact entries in production jar file (including fields in manifest file).
-- Updated read me with correct Maven execution for creating/installing artifacts to local repository.
+- Updated Copyright for 2020.
+- Updated JavaDoc for MutableValue class.
+- Updated Receiver class with return type for fluent API designs.
+- Added static method MutableValue.of(value) for easy creation.
+- Added static method MutableValue.empty() for easy creation.
+- Added method MutableValue.getValue() for exception-free retrieval of empty values.
