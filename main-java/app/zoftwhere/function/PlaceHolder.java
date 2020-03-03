@@ -13,6 +13,10 @@ public interface PlaceHolder<T> extends Receiver<T, Void>, Supplier<T> {
         return !isPresent();
     }
 
+    default T getValue() {
+        return optional().orElse(null);
+    }
+
     default T orElse(T other) {
         return optional().orElse(other);
     }

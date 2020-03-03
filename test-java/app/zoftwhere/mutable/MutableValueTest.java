@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -23,6 +24,16 @@ class MutableValueTest {
     }
 
     @Test
+    void testOfNullable() {
+        var value = "new value";
+        var actual = MutableValue.ofNullable(value);
+        assertNotNull(value);
+        assertNotNull(actual);
+        assertNotNull(actual.get());
+        assertEquals(value, actual.get());
+    }
+
+    @Test
     void testOptional() {
         assertFalse(new MutableValue<String>().optional().isPresent());
         assertTrue(new MutableValue<>("").optional().isPresent());
@@ -32,6 +43,20 @@ class MutableValueTest {
         fixed.set(input);
         assertTrue(fixed.optional().isPresent());
         assertEquals(input, fixed.optional().get());
+    }
+
+    @Test
+    void testEmpty() {
+        final var value = MutableValue.<String>empty();
+        assertNull(value.getValue());
+        assertTrue(value.isEmpty());
+    }
+
+    @Test
+    void testGetValue() {
+        final var value = MutableValue.<String>empty();
+        value.set("Hello");
+        assertEquals("Hello", value.getValue());
     }
 
     @Test
@@ -65,7 +90,6 @@ class MutableValueTest {
 
     @Test
     void testIsEmpty() {
-        assertTrue(new MutableValue<String>().isEmpty());
         assertTrue(new MutableValue<String>().isEmpty());
         assertFalse(new MutableValue<>("").isEmpty());
     }
