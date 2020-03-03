@@ -3,7 +3,7 @@ package app.zoftwhere.function;
 import java.util.Optional;
 import java.util.function.Supplier;
 
-public interface PlaceHolder<T> extends Receiver<T>, Supplier<T> {
+public interface PlaceHolder<T> extends Receiver<T, Void>, Supplier<T> {
 
     Optional<T> optional();
 

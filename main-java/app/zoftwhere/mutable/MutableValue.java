@@ -18,7 +18,7 @@ public class MutableValue<T> implements PlaceHolder<T> {
     }
 
     @Override
-    public void set(T value) {
+    public Void set(T value) {
         this.value = value;
     }
 

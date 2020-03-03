@@ -10,10 +10,10 @@ class ReceiverTest {
     @Test
     void simpleTest() {
         final var mutable = new MutableValue<>("unset");
-        final var receiver = new Receiver<String>() {
+        final var receiver = new Receiver<String, Void>() {
             @Override
-            public void set(String value) {
-                mutable.set(value);
+            public Void set(String value) {
+                return mutable.set(value);
             }
         };
         assertEquals("unset", mutable.get());
