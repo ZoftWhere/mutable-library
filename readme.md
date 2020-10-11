@@ -23,7 +23,7 @@ If the project needs to be installed against JDK8, it can be accomplished by cal
 
 ``` shell script
 mvn clean compiler:compile@main-compile-jdk8 jar:jar@main-jar build-helper:add-source@main-jpms source:jar@main-sources javadoc:jar@main-javadoc moditect:add-module-info@main-jpms install:install-file@main-install
-``` 
+```
 
 
 ## Examples
