@@ -41,4 +41,5 @@ class ThrowingConsumerTest {
     @SuppressWarnings({"RedundantThrows", "EmptyMethod"})
     private static void accept(Integer t1, Long t2, Float t3, Double t4) throws Throwable {
     }
+
 }

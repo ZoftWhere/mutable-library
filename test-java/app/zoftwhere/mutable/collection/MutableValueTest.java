@@ -2,7 +2,6 @@ package app.zoftwhere.mutable.collection;
 
 import java.util.NoSuchElementException;
 
-import app.zoftwhere.mutable.collection.MutableValue;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

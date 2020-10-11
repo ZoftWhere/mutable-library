@@ -51,4 +51,5 @@ class ThrowingConsumerScopeTest {
     private static void accept(String s1, String s2, String s3, String s4) throws Throwable {
         throw new Throwable();
     }
+
 }
