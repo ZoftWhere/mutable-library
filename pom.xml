@@ -125,6 +125,16 @@
                         </configuration>
                     </execution>
                     <execution>
+                        <id>main-compile-check</id>
+                        <phase>none</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                        <configuration>
+                            <release>${maven.compiler.main-jdk}</release>
+                        </configuration>
+                    </execution>
+                    <execution>
                         <id>main-compile-jdk8</id>
                         <phase>none</phase>
                         <goals>
