@@ -24,6 +24,9 @@
         <maven.compiler.main-jdk>8</maven.compiler.main-jdk>
         <maven.compiler.test-jdk>11</maven.compiler.test-jdk>
 
+        <!-- Settings: maven-build -->
+        <maven.build.timestamp.format>yyyy-MM-dd&apos;T&apos;HH:mm:ss&apos;Z&apos;</maven.build.timestamp.format>
+
         <!-- Settings: User defined plugin properties -->
         <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
@@ -270,6 +273,7 @@
                             <goal>jar</goal>
                         </goals>
                         <configuration>
+                            <forceCreation>true</forceCreation>
                             <skipIfEmpty>false</skipIfEmpty>
                         </configuration>
                     </execution>
@@ -290,11 +294,12 @@
                         <addMavenDescriptor>false</addMavenDescriptor>
                         <manifest>
                             <addClasspath>false</addClasspath>
+                            <addDefaultEntries>true</addDefaultEntries>
+                            <addDefaultImplementationEntries>false</addDefaultImplementationEntries>
+                            <addDefaultSpecificationEntries>false</addDefaultSpecificationEntries>
                         </manifest>
                         <manifestEntries>
-                            <Main-Class/>
-                            <Class-Path/>
-                            <Dependencies/>
+                            <Build-DateTime>${maven.build.timestamp}</Build-DateTime>
                             <Implementation-Title>${project.artifactId}</Implementation-Title>
                             <Implementation-Vendor>${project.groupId}</Implementation-Vendor>
                             <Implementation-Version>${project.version}</Implementation-Version>
@@ -350,6 +355,21 @@
                 <configuration>
                     <quiet>true</quiet>
                     <failOnError>true</failOnError>
+                    <archive>
+                        <addMavenDescriptor>false</addMavenDescriptor>
+                        <manifest>
+                            <addClasspath>false</addClasspath>
+                        </manifest>
+                        <manifestEntries>
+                            <Build-DateTime>${maven.build.timestamp}</Build-DateTime>
+                            <Implementation-Title>${project.artifactId}</Implementation-Title>
+                            <Implementation-Vendor>${project.groupId}</Implementation-Vendor>
+                            <Implementation-Version>${project.version}</Implementation-Version>
+                            <Specification-Title>${project.artifactId}</Specification-Title>
+                            <Specification-Vendor>${project.groupId}</Specification-Vendor>
+                            <Specification-Version>${project.version}</Specification-Version>
+                        </manifestEntries>
+                    </archive>
                 </configuration>
             </plugin>
 
@@ -379,6 +399,23 @@
                         </configuration>
                     </execution>
                 </executions>
+                <configuration>
+                    <archive>
+                        <addMavenDescriptor>false</addMavenDescriptor>
+                        <manifest>
+                            <addClasspath>false</addClasspath>
+                        </manifest>
+                        <manifestEntries>
+                            <Build-DateTime>${maven.build.timestamp}</Build-DateTime>
+                            <Implementation-Title>${project.artifactId}</Implementation-Title>
+                            <Implementation-Vendor>${project.groupId}</Implementation-Vendor>
+                            <Implementation-Version>${project.version}</Implementation-Version>
+                            <Specification-Title>${project.artifactId}</Specification-Title>
+                            <Specification-Vendor>${project.groupId}</Specification-Vendor>
+                            <Specification-Version>${project.version}</Specification-Version>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
             </plugin>
 
             <plugin>
