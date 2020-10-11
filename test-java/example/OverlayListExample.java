@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import app.zoftwhere.mutable.OverlayList;
+import app.zoftwhere.mutable.collection.OverlayList;
 
 public class OverlayListExample {
 

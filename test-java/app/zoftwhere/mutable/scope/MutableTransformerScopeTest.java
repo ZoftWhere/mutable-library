@@ -1,10 +1,10 @@
 package app.zoftwhere.mutable.scope;
 
-import app.zoftwhere.mutable.MutableTransformer0;
-import app.zoftwhere.mutable.MutableTransformer1;
-import app.zoftwhere.mutable.MutableTransformer2;
-import app.zoftwhere.mutable.MutableTransformer3;
-import app.zoftwhere.mutable.MutableTransformer4;
+import app.zoftwhere.mutable.collection.MutableTransformer0;
+import app.zoftwhere.mutable.collection.MutableTransformer1;
+import app.zoftwhere.mutable.collection.MutableTransformer2;
+import app.zoftwhere.mutable.collection.MutableTransformer3;
+import app.zoftwhere.mutable.collection.MutableTransformer4;
 import org.junit.jupiter.api.Test;
 
 class MutableTransformerScopeTest {

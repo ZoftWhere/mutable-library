@@ -4,7 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
-import app.zoftwhere.mutable.MutableValue;
+import app.zoftwhere.mutable.collection.MutableValue;
 
 /**
  * When you need a final field in your lambda, but you need the value to change later on, using a MutableValue instance
