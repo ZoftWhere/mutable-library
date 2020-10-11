@@ -1,5 +1,8 @@
 # ZoftWhere Mutable Library
-![Language](https://img.shields.io/github/languages/top/ZoftWhere/mutable-library) [![License](https://img.shields.io/github/license/ZoftWhere/mutable-library)](https://github.com/ZoftWhere/mutable-library/blob/master/license.txt) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/ZoftWhere/mutable-library) ![GitHub Release Date](https://img.shields.io/github/release-date/ZoftWhere/mutable-library)
+![Language](https://img.shields.io/github/languages/top/ZoftWhere/mutable-library)
+[![License](https://img.shields.io/github/license/ZoftWhere/mutable-library)](https://github.com/ZoftWhere/mutable-library/blob/master/license.txt)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/ZoftWhere/mutable-library)
+![GitHub Release Date](https://img.shields.io/github/release-date/ZoftWhere/mutable-library)
 ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/ZoftWhere/mutable-library/master?label=master%20updated)
 
 A library for mutable values.
@@ -20,7 +23,7 @@ If the project needs to be installed against JDK8, it can be accomplished by cal
 
 ``` shell script
 mvn clean compiler:compile@main-compile-jdk8 jar:jar@main-jar build-helper:add-source@main-jpms source:jar@main-sources javadoc:jar@main-javadoc moditect:add-module-info@main-jpms install:install-file@main-install
-``` 
+```
 
 
 ## Examples

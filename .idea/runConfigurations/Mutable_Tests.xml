@@ -1,0 +1,27 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Mutable Tests" type="JUnit" factoryName="JUnit">
+    <module name="mutable-library" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="app.zoftwhere.mutable.collection.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+      <pattern>
+        <option name="PATTERN" value="app.zoftwhere.mutable.function.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <option name="PACKAGE_NAME" value="" />
+    <option name="MAIN_CLASS_NAME" value="" />
+    <option name="METHOD_NAME" value="" />
+    <option name="TEST_OBJECT" value="pattern" />
+    <option name="PARAMETERS" value="" />
+    <patterns>
+      <pattern testClass="(example\..*)" />
+      <pattern testClass="(app\.zoftwhere\.mutable\..*Test)" />
+    </patterns>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
