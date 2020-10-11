@@ -28,10 +28,11 @@
         <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
         <maven-site-plugin.version>3.8.2</maven-site-plugin.version>
         <maven-source-plugin.version>3.1.0</maven-source-plugin.version>
-        <maven-surefire-plugin.version>3.0.0-M3</maven-surefire-plugin.version>
+        <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
         <maven-toolchains-plugin.version>3.0.0</maven-toolchains-plugin.version>
 
         <!-- > -->
+        <surefire.printSummary>false</surefire.printSummary>
         <org.junit.5.version>5.4.2</org.junit.5.version>
     </properties>
 
@@ -101,7 +102,12 @@
                             <goal>compile</goal>
                         </goals>
                         <configuration>
+                            <!-- main compile against test JDK API with module-info -->
                             <release>${maven.compiler.test-jdk}</release>
+                            <compileSourceRoots>
+                                <sourceRoot>${project.basedir}/main-java</sourceRoot>
+                                <sourceRoot>${project.basedir}/main-jpms</sourceRoot>
+                            </compileSourceRoots>
                         </configuration>
                     </execution>
                     <execution>
@@ -176,13 +182,36 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
-                <configuration>
-                    <!-- https://issues.apache.org/jira/browse/SUREFIRE-1534 -->
-                    <forkCount>0</forkCount>
-                    <reuseForks>false</reuseForks>
-                    <useSystemClassLoader>false</useSystemClassLoader>
-                    <printSummary>false</printSummary>
-                </configuration>
+                <executions>
+                    <execution>
+                        <id>default-test</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <argLine>
+                                <!-- main-java packages -->
+                                --add-opens&#32;zoftwhere.mutable.library/app.zoftwhere.mutable.function=ALL-UNNAMED
+                                --add-opens&#32;zoftwhere.mutable.library/app.zoftwhere.mutable.collection=ALL-UNNAMED
+                                <!-- test-java packages -->
+                                --add-opens&#32;zoftwhere.mutable.library/app.zoftwhere.mutable.scope=ALL-UNNAMED
+                                --add-opens&#32;zoftwhere.mutable.library/app.zoftwhere.mutable.example=ALL-UNNAMED
+                                --add-opens&#32;zoftwhere.mutable.library/example=ALL-UNNAMED
+                            </argLine>
+                            <forkCount>1</forkCount>
+                            <reuseForks>true</reuseForks>
+                            <useSystemClassLoader>false</useSystemClassLoader>
+                            <printSummary>${surefire.printSummary}</printSummary>
+                            <includes>
+                                <!-- Include default classes -->
+                                <include>app/zoftwhere/mutable/**/*Test.java</include>
+                                <!-- Include example classes -->
+                                <include>example/*.java</include>
+                            </includes>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
 
             <plugin>
