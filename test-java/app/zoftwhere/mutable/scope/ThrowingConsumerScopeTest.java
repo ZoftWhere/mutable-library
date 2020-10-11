@@ -12,24 +12,39 @@ class ThrowingConsumerScopeTest {
     @Test
     void simpleInterfaceTest() {
         final ThrowingConsumer0 throw0 = ThrowingConsumerScopeTest::accept;
-        try { throw0.accept(); }
-        catch (Throwable ignore) {}
+        try {
+            throw0.accept();
+        }
+        catch (Throwable ignore) {
+        }
 
         final ThrowingConsumer1<String> throw1 = ThrowingConsumerScopeTest::accept;
-        try { throw1.accept("s1"); }
-        catch (Throwable ignore) {}
+        try {
+            throw1.accept("s1");
+        }
+        catch (Throwable ignore) {
+        }
 
         final ThrowingConsumer2<String, String> throw2 = ThrowingConsumerScopeTest::accept;
-        try { throw2.accept("s1", "s2"); }
-        catch (Throwable ignore) {}
+        try {
+            throw2.accept("s1", "s2");
+        }
+        catch (Throwable ignore) {
+        }
 
         final ThrowingConsumer3<String, String, String> throw3 = ThrowingConsumerScopeTest::accept;
-        try { throw3.accept("s1", "s2", "s3"); }
-        catch (Throwable ignore) {}
+        try {
+            throw3.accept("s1", "s2", "s3");
+        }
+        catch (Throwable ignore) {
+        }
 
         final ThrowingConsumer4<String, String, String, String> throw4 = ThrowingConsumerScopeTest::accept;
-        try { throw4.accept("s1", "s2", "s3", "s4"); }
-        catch (Throwable ignore) {}
+        try {
+            throw4.accept("s1", "s2", "s3", "s4");
+        }
+        catch (Throwable ignore) {
+        }
     }
 
     private static void accept() throws Throwable {

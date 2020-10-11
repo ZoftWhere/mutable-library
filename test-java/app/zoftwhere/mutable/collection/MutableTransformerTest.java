@@ -85,7 +85,7 @@ class MutableTransformerTest {
 
         final var m4 =
             new MutableTransformer4<String, String, String, String, Integer>(internal -> (t1, t2, t3, t4) -> internal
-            .set(4));
+                .set(4));
         m4.accept("7", "8", "9", "10");
         assertEquals(4, m4.get());
     }

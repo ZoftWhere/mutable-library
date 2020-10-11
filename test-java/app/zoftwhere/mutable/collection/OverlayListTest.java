@@ -52,49 +52,57 @@ class OverlayListTest {
             overlay.add("next");
             fail("overlay.list.expected.unsupported.operation.exception");
         }
-        catch (UnsupportedOperationException ignore) {}
+        catch (UnsupportedOperationException ignore) {
+        }
 
         try {
             overlay.add(0, "next");
             fail("overlay.list.expected.unsupported.operation.exception");
         }
-        catch (UnsupportedOperationException ignore) {}
+        catch (UnsupportedOperationException ignore) {
+        }
 
         try {
             overlay.addAll(List.of("1", "2", "3"));
             fail("overlay.list.expected.unsupported.operation.exception");
         }
-        catch (UnsupportedOperationException ignore) {}
+        catch (UnsupportedOperationException ignore) {
+        }
 
         try {
             overlay.addAll(0, List.of("1", "2", "3"));
             fail("overlay.list.expected.unsupported.operation.exception");
         }
-        catch (UnsupportedOperationException ignore) {}
+        catch (UnsupportedOperationException ignore) {
+        }
 
         try {
             overlay.remove("next");
             fail("overlay.list.expected.unsupported.operation.exception");
         }
-        catch (UnsupportedOperationException ignore) {}
+        catch (UnsupportedOperationException ignore) {
+        }
 
         try {
             overlay.remove(0);
             fail("overlay.list.expected.unsupported.operation.exception");
         }
-        catch (UnsupportedOperationException ignore) {}
+        catch (UnsupportedOperationException ignore) {
+        }
 
         try {
             overlay.removeIf(s -> true);
             fail("overlay.list.expected.unsupported.operation.exception");
         }
-        catch (UnsupportedOperationException ignore) {}
+        catch (UnsupportedOperationException ignore) {
+        }
 
         try {
             overlay.removeAll(List.of("1", "2", "3"));
             fail("overlay.list.expected.unsupported.operation.exception");
         }
-        catch (UnsupportedOperationException ignore) {}
+        catch (UnsupportedOperationException ignore) {
+        }
 
         // Replace all.
         overlay.set(0, "1");
@@ -106,20 +114,23 @@ class OverlayListTest {
             overlay.retainAll(List.of("1", "2", "3"));
             fail("overlay.list.expected.unsupported.operation.exception");
         }
-        catch (UnsupportedOperationException ignore) {}
+        catch (UnsupportedOperationException ignore) {
+        }
 
         try {
             overlay.clear();
             fail("overlay.list.expected.unsupported.operation.exception");
         }
-        catch (UnsupportedOperationException ignore) {}
+        catch (UnsupportedOperationException ignore) {
+        }
 
         try {
             //noinspection RedundantOperationOnEmptyContainer
             overlay.sort(Comparator.naturalOrder());
             fail("overlay.list.expected.unsupported.operation.exception");
         }
-        catch (UnsupportedOperationException ignore) {}
+        catch (UnsupportedOperationException ignore) {
+        }
 
         assertNotNull(overlay.subList(0, 1));
 

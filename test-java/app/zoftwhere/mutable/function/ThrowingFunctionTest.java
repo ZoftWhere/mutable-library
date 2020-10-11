@@ -39,7 +39,8 @@ class ThrowingFunctionTest {
             tf0.accept();
             fail();
         }
-        catch (Throwable ignored) { }
+        catch (Throwable ignored) {
+        }
 
         final ThrowingFunction1<Integer, String> tf1 //
             = (Integer t1) -> { throw new NullPointerException(); };
@@ -47,7 +48,8 @@ class ThrowingFunctionTest {
             tf1.accept(1);
             fail();
         }
-        catch (Throwable ignored) { }
+        catch (Throwable ignored) {
+        }
 
         final ThrowingFunction2<Integer, Long, String> tf2 //
             = (Integer t1, Long t2) -> { throw new NullPointerException(); };
@@ -55,7 +57,8 @@ class ThrowingFunctionTest {
             tf2.accept(1, 2L);
             fail();
         }
-        catch (Throwable ignored) { }
+        catch (Throwable ignored) {
+        }
 
         final ThrowingFunction3<Integer, Long, Float, String> tf3 //
             = (Integer t1, Long t2, Float t3) -> { throw new NullPointerException(); };
@@ -63,7 +66,8 @@ class ThrowingFunctionTest {
             tf3.accept(1, 2L, 3f);
             fail();
         }
-        catch (Throwable ignored) { }
+        catch (Throwable ignored) {
+        }
 
         final ThrowingFunction4<Integer, Long, Float, Double, String> tf4 //
             = (Integer t1, Long t2, Float t3, Double t4) -> { throw new NullPointerException(); };
@@ -71,7 +75,8 @@ class ThrowingFunctionTest {
             tf4.accept(1, 2L, 3f, 4d);
             fail();
         }
-        catch (Throwable ignored) { }
+        catch (Throwable ignored) {
+        }
     }
 
 }

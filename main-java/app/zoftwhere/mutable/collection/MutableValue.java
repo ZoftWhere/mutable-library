@@ -12,8 +12,6 @@ import app.zoftwhere.mutable.function.PlaceHolder;
  */
 public class MutableValue<T> implements PlaceHolder<T> {
 
-    private T value;
-
     /**
      * Returns a {@code MutableValue} describing the given value.
      *
@@ -34,6 +32,8 @@ public class MutableValue<T> implements PlaceHolder<T> {
     public static <T> MutableValue<T> empty() {
         return new MutableValue<>();
     }
+
+    private T value;
 
     /**
      * Constructs a mutable value with initial value of null.
@@ -64,7 +64,7 @@ public class MutableValue<T> implements PlaceHolder<T> {
      * Retrieve mutable value.
      *
      * @return Stored value
-     * @exception NoSuchElementException if no value is present
+     * @throws NoSuchElementException if no value is present
      */
     @Override
     public T get() {
