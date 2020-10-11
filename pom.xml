@@ -6,6 +6,13 @@
     <groupId>app.zoftwhere.mutable</groupId>
     <artifactId>mutable-library</artifactId>
     <version>3.0.0-SNAPSHOT</version>
+    <organization>
+        <name>ZoftWhere</name>
+        <url>https://github.com/ZoftWhere</url>
+    </organization>
+    <name>zoftwhere.mutable.library</name>
+    <description>A library for mutable values.</description>
+    <url>https://github.com/ZoftWhere/mutable-library</url>
 
     <properties>
         <!-- Settings: maven-resource-plugin -->
